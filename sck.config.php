@@ -17,8 +17,8 @@ By default, test mode is enabled. When you're ready to begin processing live cha
 */
 
 c::set('stripe_test_mode', true);
-c::set('stripe_test_secret_key', 'sk_test_8azO6Sto6q47Wp6mqQnzSQsd');
-c::set('stripe_test_publishable_key', 'pk_test_AFhA7f5ciyhHgz5VAVr3FbAU');
+c::set('stripe_test_secret_key', '');
+c::set('stripe_test_publishable_key', '');
 c::set('stripe_live_secret_key', '');
 c::set('stripe_live_publishable_key', '');
 
@@ -75,26 +75,3 @@ c::set('stripe_bitcoin', false);
 
 c::set('stripe_confirmation_heading', '<h3>Purchase Complete</h3>');
 c::set('stripe_confirmation_message', '<p>Thank you for your purchase! You\'ll receive an email receipt shortly.</p>');
-
-/*
-
-If you'd prefer that the charge process redirects to a specific page once completed, enable the `stripe_redirect_on_success` parameter and specify the page to redirect to. 
-
-A custom route is used (which uses whatever you specify `stripe_redirect_to_url` to be) if you'd also like to perform some additional actions.
-
-See the template "checkout-success.php" for example usage. An example page that you can add to your `content` folder is included, which uses this template and is the default location for the route. 
-
-*/
-
-c::set('stripe_redirect_on_success', true);
-c::set('stripe_redirect_to_page', 'thanks');
-
-c::set('routes', array(
-  array(
-    'pattern' => c::get('stripe_redirect_to_page'),
-    'action'  => function() {
-
-        return page('stripe-checkout-complete');
-    }
-  )
-));

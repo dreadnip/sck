@@ -15,7 +15,3 @@ require_once(__DIR__.DS.'sck.config.php');
 require_once(__DIR__.DS.'lib/sck.php');
 
 $kirby->set('snippet', 'sck', __DIR__ . '/snippets/sck.php');
-
-$kirby->set('template', 'checkout', __DIR__ . '/templates/checkout.php');
-
-$kirby->set('template', 'checkout-success', __DIR__ . '/templates/checkout-success.php');

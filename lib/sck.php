@@ -122,11 +122,7 @@ class Sck
 			)
 		));
 
-		if (c::get('stripe_redirect_on_success')) {
-			header('Location: ' . c::get('stripe_redirect_to_page'));
-		} else {
-			echo c::get('stripe_confirmation_heading');
-			echo c::get('stripe_confirmation_message');
-		}
+		echo c::get('stripe_confirmation_heading');
+		echo c::get('stripe_confirmation_message');
 	}
 }
