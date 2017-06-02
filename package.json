@@ -1,0 +1,8 @@
+{
+  "name": "sck",
+  "author": "Sander De la Marche <inbox@sanderdlm.be>",
+  "version": "0.4.0",
+  "description": "Stripe Checkout integration for Kirby 2",
+  "type": "kirby-plugin",
+  "license": "MIT"
+}
