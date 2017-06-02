@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Kirby SEO checklist plugin
+ * SCK (Stripe Checkout for Kirby)
  *
- * @version   0.1.0
+ * @version   0.4.0
  * @author    Sander De la Marche <inbox@sanderdlm.be>
  * @copyright Sander De la Marche <inbox@sanderdlm.be>
  * @link      https://github.com/dreadnip/kirby-seo-checklist
