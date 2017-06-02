@@ -11,6 +11,7 @@
  */
 
 require_once(__DIR__.DS.'vendor/autoload.php');
+require_once(__DIR__.DS.'sck.config.php');
 require_once(__DIR__.DS.'lib/sck.php');
 
 $kirby->set('snippet', 'sck', __DIR__ . '/snippets/sck.php');
