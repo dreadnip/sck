@@ -1,16 +1,11 @@
 # SCK (Stripe Checkout for Kirby)
 
-A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) using [Checkout](https://stripe.com/checkout). You can also accept [AliPay](https://stripe.com/docs/alipay) and [Bitcoin](https://stripe.com/docs/bitcoin) payments, if your Stripe account supports it.
+A plugin for Kirby 2 to process basic payments with [Stripe](https://stripe.com) using [Checkout](https://stripe.com/checkout). 
 
-## What I've changed from the original repo
+This is **not** a fully featured e-commerce solution. There is no cart, no product management, no shipping, etc. If you want those, take a look at [Shopkit](http://getkirby-plugins.com/shopkit) by Sam Nabi. 
 
-* Moved most of the logic from the snippet and the charge file into a single class.
-* Moved the included snippet & template to within the plugin.
-* Various small code tweaks
-* Added Composer for the Stripe-php library
-* Moved the config file to the plugin directory
-* Changed the plugin structure so it can be used as a Git submodule
-* Improved on the plug-and-play feeling of this plugin. All you need to do to sell a product is include ```<?php snippet('sck'); ?>``` in a template, and ```amount``` and ```description``` fields in your content files. That's it.
+This plugin delivers a lightweight and easy-to-setup snippet that allows you to quickly get working a Stripe button on your website.
+
 ## Requirements
 
 - Kirby 2.3+
@@ -20,12 +15,21 @@ SSL/TLS is [required by Stripe](https://stripe.com/docs/checkout#https) when pro
 
 ## Installation
 
-1. Either copy the content of this repo to your plugin folder or add it as a submodule.
+1. Either copy the content of this repo to your plugin folder, add it as a Git submodule or use the Kirby CLI to install it.
 2. Edit `sck.config.php`, insert your Stripe API keys and change any options as needed.
 
 ## Usage
 
-To use SCK in any page, two fields need to be present.
+To place a 'Pay Now' Stripe button on your page, include the Sck snippet in it's template.
+
+```
+<?php snippet('sck'); ?>
+```
+
+Next up, you need to add 2 fields to your content so Stripe knows 
+a) what you're selling
+and 
+b) what the price is.
 
 ### Amount
 
@@ -37,7 +41,9 @@ The currency is set within SCK's options in the `config.php` file.
 
 This is used both as the description in the Checkout form and also the description of the charge when you view it in the Stripe dashboard. 
 
-## Example product content file
+## Example
+
+### product.txt
 
 ````
 Title: My awesome product
@@ -46,10 +52,10 @@ Amount: 9.99
 ----
 Description: An example product in your store
 ----
-Text: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+Text: Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 ````
 
-## Example product template
+## product.php
 
 ````
 <?php snippet('header') ?>
@@ -58,10 +64,10 @@ Text: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo l
 
 	<h1><?php echo $page->title()->html() ?></h1>
 
-	<ul class="meta">
+	<div class="meta">
 		<li><?php echo $page->amount() ?></li>
 		<li><?php snippet('sck') ?></li>
-	</ul>
+	</div>
 
 	<div class="text">
 		<?php echo $page->text()->kirbytext() ?>
@@ -77,3 +83,16 @@ Text: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo l
 SCK has a lot of options that allow you to customise Checkout to suit your needs. 
 
 All options are set in the included `sck.config.php` file.
+
+## What I've changed from the original repo
+
+* Bundled all of the plugin logic in a single class
+* Changed the plugin structure so it can be used as a Git submodule
+* Removed a few features (like redirect after buy) to simplify the plugin
+* Added the Stripe-php library with Composer
+* Moved the config file inside the plugin
+* Various small code tweaks
+
+## Credit
+
+All credit for the original code, idea and implementation goes to [Jordan Merrick](https://github.com/jordanmerrick)
