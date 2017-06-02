@@ -2,23 +2,17 @@
 
 A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) using [Checkout](https://stripe.com/checkout). You can also accept [AliPay](https://stripe.com/docs/alipay) and [Bitcoin](https://stripe.com/docs/bitcoin) payments, if your Stripe account supports it.
 
-## Features
+## What I've changed from the original repo
 
-- Includes everything needed to add Checkout to any page and begin processing payments with Stripe
-- Works on both desktop and mobile
-- Checkout integration is easy with just the addition of a snippet and a template
-- Makes use of Checkout's vast array of features and functionality
-- Supports alternative payment methods, such as Bitcoin and AliPay, in addition to most major credit/debit cards (if your Stripe account supports it)
-- Supports Stripe's [email receipts](https://support.stripe.com/questions/email-receipts) feature, so customers will receive an email confirmation of their purchase
-- All billing and email information is passed to Stripe when creating the charge
-- Option to collect shipping address information, which is then passed as metadata to Stripe and viewable within your Stripe dashboard
-- Supports both decimal mark types: decimal point or decimal comma (e.g. $999.99 or €999,99)
-- Supports both left or right-positioned currency symbols (e.g. $999.99 or 999,99 kr)
-- All configuration settings are integrated into Kirby's `config.php` file, making them easy to find and build upon if you want to extend the plugin's functionality
+* Moved most of the logic from the snippet and the charge file into a single class.
+* Moved the included snippet & template to within the plugin.
+* Various small code tweaks
+* Added Composer for the Stripe-php library
 
-You can read about all of Stripe Checkout's features over at [Stripe's Checkout documentation](https://stripe.com/docs/checkout).
+## What I still want to do
 
-You can see a live demo of SCK with a Stripe Checkout form over at Workflow Directory [jordanmerrick.com](https://workflow.directory).
+* Create a different solution for the config file
+* Improve on the plug-and-play feeling of this plugin. I want it to be as simple as copy the plugin to your plugins folder, put an ```amount``` in your content, include the snippet and it should work.
 
 ## Requirements
 
@@ -32,20 +26,10 @@ SSL/TLS is [required by Stripe](https://stripe.com/docs/checkout#https) when pro
 
 ## Installation
 
-1. Copy the included files to the appropriate folders. 
-2. Download the [Stripe PHP library](https://github.com/stripe/stripe-php/releases), rename the extracted folder to `stripe-php` and copy it to `/site/plugins/sck`.  
+1. Copy the plugin to your plugin folder and the config file to your config folder.
+2. Run ```composer install``` inside the plugin folder.
 3. Edit `/site/config/config.php` and insert `include 'sck.config.php';` after any listed options so Kirby will load the configuration file.
 4. Edit `/site/config/sck.config.php`, insert your Stripe API keys and change any options as needed.
-
-### Upgrading from previous versions
-
-The only file that should be modified is `sck.config.php`, which contains your SCK settings. When upgrading, replace all other plugin files except this one. Should there be any new options added to SCK, simply add them to your existing `sck.config.php` file. 
-
-If you have modified any other plugin files, you will need to ensure your changes are made to the updated plugin files. 
-
-### Setting up the template
-
-At the very least, you need to have `<?php snippet('sck') ?>` somewhere in the page template you're going to be using. Use the included `checkout.php` for info on how you can adapt or use it (comments are included), or even just modify it to fit.
 
 ## Usage
 
