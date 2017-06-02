@@ -37,7 +37,7 @@ The currency is set within SCK's options in the `config.php` file.
 
 This is used both as the description in the Checkout form and also the description of the charge when you view it in the Stripe dashboard. 
 
-## Example page
+## Example product content file
 
 ````
 Title: My awesome product
@@ -47,6 +47,29 @@ Amount: 9.99
 Description: An example product in your store
 ----
 Text: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+````
+
+## Example product template
+
+````
+<?php snippet('header') ?>
+
+<main class="main cf" role="main">
+
+	<h1><?php echo $page->title()->html() ?></h1>
+
+	<ul class="meta">
+		<li><?php echo $page->amount() ?></li>
+		<li><?php snippet('sck') ?></li>
+	</ul>
+
+	<div class="text">
+		<?php echo $page->text()->kirbytext() ?>
+	</div>
+
+</main>
+
+<?php snippet('footer') ?>
 ````
 
 ## Options
